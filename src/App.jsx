@@ -8,25 +8,30 @@ import './App.css'
 // Вошел в аккаунт? 
 // - да - показать страницу
 
+// Уберу кнопки сохранить в этой версии приложения
 
 export default function App() {
   const [ isSignIn, setIsSignIn ] = useState(false)
   const [ content, setContent ] = useState('')
   const [ isSignUp, setIsSignUp ] = useState(false)
  
-  
+
+  const handleChange = () => {
+    setIsSignUp(true)
+  }
+
   useEffect( () => {
 
     if (isSignIn) {
       setContent(<Page/>)
     } else if(!isSignIn){
-      setContent(<SignIn setIsSignIn={setIsSignIn} setIsSignUp={setIsSignUp} isSignUp={isSignUp}/>)
+      setContent(<SignIn setIsSignIn={setIsSignIn} handleChange={handleChange}/>)
     } 
     if (!isSignIn && isSignUp) {
       setContent(<SignUp />)
     }
 
-  }, [isSignIn] )
+  }, [isSignIn, isSignUp] )
 
   return (
     <>
@@ -36,19 +41,47 @@ export default function App() {
 }
 
 
-function SignIn({setIsSignIn, setIsSignUp, isSignUp}) {
-  const ee = () => {
-    setIsSignUp(true)
-    console.log(isSignUp)
+function SignIn(props) {
+
+  const [ userEmail, setUserEmail ] = useState('')
+  const [ userPassword, setUserPassword ] = useState()
+  
+  const handleInputChange = (e) => {
+    const {id, value} = e.target;
+    if (id === 'email') {
+      setUserEmail(value);
+    }
+    if (id === 'password') {
+      setUserPassword(value);
+    }
   }
+
+
   return(
     <>
-    <h2>Войдите в аккаунт</h2>
-    <br /><br />
-    <Input /> <br /><br /><br /><br /><br /><br /><br /><br />
-    <Verification setIsSignIn={setIsSignIn}/>
+      <h2>Войдите в аккаунт</h2>
 
-    <button onClick={ ee }>У вас нет аккаунта?</button>
+      {/* Ввод Email */}
+      <h3>Введите email</h3>
+      <input 
+        type="email"
+        placeholder='Email'
+        id='email'
+        onChange={(e) => handleInputChange(e)}
+        value={userEmail}
+      />
+      {/* Ввод password */}
+        <h3>Введите пароль</h3>
+        <input 
+        type="password"
+        placeholder='Пароль'
+        onChange={(e) => handleInputChange(e)}
+        value={userPassword}
+        />
+      
+      <Verification setIsSignIn={props.setIsSignIn}/>
+
+      <button onClick={props.handleChange}>У вас нет аккаунта?</button>
     </>
   )
 }
@@ -57,13 +90,12 @@ function SignUp() {
   
   return(
     <>
-    <Input />
+      <input type="text" placeholder='Ваше имя' id="" />
     </>
   )
 }
 
 function EmailButton({}) {
-  const [ userEmail, setUserEmail ] = useState()
   const [ emailButton, setEmailButton ] = useState('Сохранить почту')
 
   const inputEmail = (e) => {
@@ -82,7 +114,7 @@ function EmailButton({}) {
 }
 
 function PasswordButton({}){
-  const [ userPassword, setUserPassword ] = useState()
+
   const [ passwordButton, setPasswordButton ] = useState('Сохранить пароль')
 
   const inputPassword = (e) => {
@@ -105,23 +137,10 @@ function Input({ inputEmail, inputPassword }) {
   
   return(
     <>
-      <h3>Введите email</h3>
-      <input 
-       type="email"
-       placeholder='Email'
-       id='email'
-       onChange={(e) => handleInputChange(e)}
-       value={email}
-       />
+
       <EmailButton />
 
-      <h3>Введите пароль</h3>
-      <input 
-       type="password"
-       placeholder='Password' 
-       onChange={(e) => handleInputChange(e)}
-       value={password}
-       />
+
       <PasswordButton />
 
     </>
