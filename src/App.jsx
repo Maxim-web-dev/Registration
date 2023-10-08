@@ -16,7 +16,6 @@ export default function App() {
   const [ isSignIn, setIsSignIn ] = useState(false)
   const [ content, setContent ] = useState('')
   const [ isSignUp, setIsSignUp ] = useState(false)
- 
 
   const handleChange = () => {
     setIsSignUp(true)
@@ -27,7 +26,7 @@ export default function App() {
     if (isSignIn) {
       setContent(<Page/>)
     } else if(!isSignIn){
-      setContent(<SignIn setIsSignIn={setIsSignIn} handleChange={handleChange}/>)
+      setContent(<SignIn setIsSignIn={setIsSignIn} handleChange={handleChange} />)
     } 
     if (!isSignIn && isSignUp) {
       setContent(<SignUp />)
@@ -44,10 +43,10 @@ export default function App() {
 
 
 function SignIn(props) {
-
+  
   const [ userEmail, setUserEmail ] = useState('')
   const [ userPassword, setUserPassword ] = useState('')
-  
+
   const handleInputChange = (e) => {
     const {id, value} = e.target;
     if (id === 'userEmail') {
@@ -57,7 +56,19 @@ function SignIn(props) {
       setUserPassword(value);
     }
   }
+  
+  let a = localStorage.getItem('email')
+  let b = localStorage.getItem('password')
 
+  const verification = () => {
+    if ( a !== userEmail) {
+      alert('Wrong email!')
+    } else if ( b !== userPassword ) {
+      alert('Wrong password!')
+    } else{
+      props.setIsSignIn(true)
+    }
+  }
 
   return(
     <>
@@ -70,7 +81,7 @@ function SignIn(props) {
         placeholder='Email'
         id='userEmail'
         onChange={(e) => handleInputChange(e)}
-        value={userEmail}
+        value={props.userEmail}
       />
       {/* Ввод password */}
         <h3>Введите пароль</h3>
@@ -79,11 +90,10 @@ function SignIn(props) {
         placeholder='Пароль'
         id='userPassword'
         onChange={(e) => handleInputChange(e)}
-        value={userPassword}
+        value={props.userPassword}
         />
       
-      <Verification setIsSignIn={props.setIsSignIn}/>
-
+      <button onClick={verification}>Войти в аккаунт</button>
       <button onClick={props.handleChange}>У вас нет аккаунта?</button>
     </>
   )
@@ -137,85 +147,10 @@ function SignUp() {
       <input type="password" placeholder='Подтвердите пароль' id="confirmPassword" onChange={handleInputChange}/> <br />
       {content}
       <button onClick={signUp}>Зарегистрироваться</button>
-    </>
-  )
-}
-
-function EmailButton({}) {
-  const [ emailButton, setEmailButton ] = useState('Сохранить почту')
-
-  const inputEmail = (e) => {
-    setUserEmail(e.target.value)
-  }
-
-  const saveEmail = () => {
-    setEmailButton('Сохранено')
-  }
-
-  return(
-    <>
-      <button onClick={saveEmail} >{emailButton}</button>
-    </>
-  )
-}
-
-function PasswordButton({}){
-
-  const [ passwordButton, setPasswordButton ] = useState('Сохранить пароль')
-
-  const inputPassword = (e) => {
-    setUserPassword(e.target.value)
-  }
-
-  const savePassword = () => {
-    setPasswordButton('Сохранено')
-  }
-  return(
-    <>
-      <button onClick={savePassword} >{passwordButton}</button>
-    </>
-  )
-}
-
-
-// Поля ввода, используются в SignIn и SignUp. При регистрации и входе в аккаунт
-function Input({ inputEmail, inputPassword }) {
-  
-  return(
-    <>
-
-      <EmailButton />
-
-
-      <PasswordButton />
 
     </>
   )
 }
-
-
-// Верификация, либо же проверка, совпадают ли данные, введеные пользователем при SignIn с data (Данные при регистрации)
-function Verification({userEmail, userPassword, setIsSignIn}) {
-
-  const dataEmail = localStorage.getItem('email')
-  const dataPassword = localStorage.getItem('password')
-  const verification = () => {
-    if ( dataEmail !== userEmail) {
-      alert('Wrong email!')
-    } else if ( dataPassword !== userPassword ) {
-      alert('Wrong password!')
-    } else{
-      setIsSignIn(true)
-    }
-  }
-
-  return(
-    <>
-    <button onClick={verification}>Войти в аккаунт</button>
-    </>
-  )
-}
-
 
 
 // Страница, генерируется если пользователь вошел в аккаунт
@@ -224,7 +159,7 @@ function Page() {
   
   return(
     <>
-      <h1>Apple site</h1>
+      <h1>Здравствуйте, {localStorage.getItem('name')}</h1>
     </>
   )
 }
