@@ -1,8 +1,94 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-image: url(/public/img/wallpapers.jpg) ;
+  background-size: cover;
 }
+h4{
+  color: rgb(97, 97, 97);
+}
+input{
+  border-radius: 7px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 15px;
+  margin: 0;
+  width: 20vw;
+  font-size:small; 
+}
+input[type='checkbox']{
+  width: auto;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+.signIn{
+  font-size: 15px;
+  border-radius: 18px;
+  border: 1px solid transparent;
+  padding-bottom: 8px; 
+  padding: 7px;
+  width: 21vw;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+.signIn:hover {
+  border-color: #ffaa00;
+}
+.signIn:focus,
+.signIn:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+.signIn__container{
+  display: flex;
+  align-items: center;
+  /* padding: 20px; */
+  border-radius: 20px;
+  box-shadow: 0px 0px 50px 3px black;
+  background-color: aliceblue;
+}
+.signIn__emailInput{
+  padding: 0;
+}
+img{
+  max-height: 80vh;
+  border-radius: 0 20px 20px 0;
+}
+.imgBlook{
+  flex: 1; 
+}
+.textBlock{
+  width: 30vw;
+  height: 70vh;
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 
-
+}
+h2{
+  align-self: center;
+  background: linear-gradient(45deg, #db3309 33%, #d48608 66%, #ffe100);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #0B2349;
+}
+a{
+  color: black;
+}
+label{
+  cursor: pointer;
+  font-size: 12px;
+}
+form{
+  margin-top: 40px;
+}

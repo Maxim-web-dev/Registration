@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
+
 // Вошел в аккаунт? 
 // - да - показать страницу
 // - нет - страница SignIn. Внизу: вы не зарегестрированы? - SignUp
@@ -43,9 +44,12 @@ export default function App() {
 
 
 function SignIn(props) {
-  
+
   const [ userEmail, setUserEmail ] = useState('')
   const [ userPassword, setUserPassword ] = useState('')
+  const [ stateOfPassword, setStateOfPassword ] = useState('password')
+
+  
 
   const handleInputChange = (e) => {
     const {id, value} = e.target;
@@ -69,33 +73,44 @@ function SignIn(props) {
       props.setIsSignIn(true)
     }
   }
-
+  const viewPassword = () => {
+    if (stateOfPassword === 'password') {
+      setStateOfPassword('text')
+    } else if (stateOfPassword === 'text') {
+      setStateOfPassword('password')
+    }
+  }
   return(
-    <>
-      <h2>Войдите в аккаунт</h2>
+    <div className='signIn__container'>
 
-      {/* Ввод Email */}
-      <h3>Введите email</h3>
-      <input 
-        type="email"
-        placeholder='Email'
-        id='userEmail'
-        onChange={(e) => handleInputChange(e)}
-        value={props.userEmail}
-      />
-      {/* Ввод password */}
-        <h3>Введите пароль</h3>
-        <input 
-        type="password"
-        placeholder='Пароль'
-        id='userPassword'
-        onChange={(e) => handleInputChange(e)}
-        value={props.userPassword}
-        />
-      
-      <button onClick={verification}>Войти в аккаунт</button>
-      <button onClick={props.handleChange}>У вас нет аккаунта?</button>
-    </>
+      <div className="textBlock">
+        <h2>Войдите в аккаунт</h2>
+
+        <div className="Inputes">
+
+          <form className="emailForm">
+            <h4>Введите email</h4>
+            <input className='emailinput'type="email"placeholder='Email'id='userEmail'onChange={(e) => handleInputChange(e)}value={props.userEmail}/>          
+          </form>
+
+          <form className="passwordForm">
+            <h4>Введите пароль</h4>
+              <input className='passwordInput' type={stateOfPassword}placeholder='Пароль'id='userPassword'onChange={(e) => handleInputChange(e)}value={props.userPassword}/>
+            <div className="checkboxContainer">
+              <input type="checkbox" className='showPassword' id='showPassword' onClick={viewPassword}/>
+              <label htmlFor="showPassword">Показать пароль</label>
+            </div>
+          </form>
+        </div>
+
+        <button onClick={verification} className='signIn'>Войти в аккаунт</button>
+        <a href='#'onClick={props.handleChange} className="notAccount">У вас нет аккаунта?</a>
+      </div>
+
+      {/* <div className="imgBlock"> */}
+        <img src="https://images.unsplash.com/photo-1544963151-fb47c1a06478?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3087&q=80"/>
+      {/* </div> */}
+    </div>
   )
 }
 
