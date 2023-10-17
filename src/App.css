@@ -1,27 +1,3 @@
-body {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background-image: url(/public/img/wallpapers.jpg) ;
-  background-size: cover;
-}
-h4{
-  color: rgb(97, 97, 97);
-}
-input{
-  border-radius: 7px;
-  border: 1px solid rgba(0, 0, 0, 0);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 15px;
-  margin: 0;
-  width: 20vw;
-  font-size:small; 
-}
 input[type='checkbox']{
   width: auto;
   cursor: pointer;
@@ -46,49 +22,123 @@ input[type='checkbox']{
 .signIn:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-.signIn__container{
+.signInСontainer{
   display: flex;
-  align-items: center;
-  /* padding: 20px; */
+  /* align-items: center; */
   border-radius: 20px;
   box-shadow: 0px 0px 50px 3px black;
   background-color: aliceblue;
 }
-.signIn__emailInput{
-  padding: 0;
-}
-img{
-  max-height: 80vh;
+.imgSignIn{
   border-radius: 0 20px 20px 0;
 }
-.imgBlook{
-  flex: 1; 
-}
-.textBlock{
+.textBlockSignIn{
   width: 30vw;
-  height: 70vh;
   flex: 1; 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+
+
+
+
+
+
+.easyPassword{
+  height: 2px;
+  width: 20px;
+  border-radius: 10px;
+  border: 1px solid greenyellow;
+  background-color: greenyellow;
+  margin-left: 2px;
+  margin-top: 15px;
+}
+.mediumPassword{
+  height: 2px;
+  width: 20px;
+  border-radius: 10px;
+  border: 1px solid rgb(230, 230, 0);
+  background-color: rgb(230, 230, 0);
+  margin-left: 2px;
+  margin-top: 15px;
+}
+.strongPassword{
+  height: 2px;
+  width: 20px;
+  border-radius: 10px;
+  border: 1px solid red;
+  background-color: red;
+  margin-left: 2px;
+  margin-top: 15px;
+}
+.passwordComplexityContainer{
+  display: flex;
+  
+}
+.allAboutPassword{
+  /* margin-top: 10px; */
+  padding: 5px;
+  width: max-content;
+  /* border: 1px solid rgb(80, 80, 80); */
+  border-radius: 15px;
 
 }
-h2{
-  align-self: center;
-  background: linear-gradient(45deg, #db3309 33%, #d48608 66%, #ffe100);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: #0B2349;
+.defaultPassword{
+  height: 2px;
+  width: 20px;
+  border-radius: 10px;
+  border: 1px solid white;
+  background-color: white;
+  margin-left: 2px;
+  margin-top: 15px;
 }
-a{
-  color: black;
+
+
+
+
+
+
+
+
+.signUpContainer{
+  display: flex;
+  border-radius: 20px;
+  box-shadow: 0px 0px 50px 3px black;
+  background-color: aliceblue;
 }
-label{
+.imgSignUp{
+  border-radius: 20px 0 0 20px;
+}
+
+.textBlockSignUp{
+  display: flex;
+  width: 30vw;
+  flex: 1; 
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-between; */
+  /* justify-content:space-evenly; */
+  /* justify-content:space-around; */
+}
+
+.signUp{
+  font-size: 15px;
+  border-radius: 18px;
+  border: 1px solid transparent;
+  padding-bottom: 8px; 
+  padding: 7px;
+  width: 21vw;
+  background-color: #ffffff;
   cursor: pointer;
-  font-size: 12px;
+  transition: border-color 0.25s;
 }
-form{
-  margin-top: 40px;
+.signUp:hover {
+  border-color: #ffaa00;
+}
+.signUp:focus,
+.signUP:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }
