@@ -16,11 +16,9 @@ import './App.css'
 export default function App() {
   const [ isSignIn, setIsSignIn ] = useState(false)
   const [ content, setContent ] = useState('')
-  const [ isSignUp, setIsSignUp ] = useState(false)
   const [ accountStatus, setAccountStatus ] = useState(true)
 
   const handleChange = () => {
-    // setIsSignUp(true)
     setAccountStatus(false)
   }
 
@@ -30,7 +28,6 @@ export default function App() {
       setContent(<Page/>)
     } else if(!isSignIn){
       setContent(<SignIn setIsSignIn={setIsSignIn} handleChange={handleChange} />)
-      // setContent(<SignUp setIsSignIn={setIsSignIn} handleChange={handleChange} />)
     } 
     if (!isSignIn && !accountStatus) {
       setContent(<SignUp setAccountStatus={setAccountStatus}/>)
@@ -120,7 +117,6 @@ function SignUp(props) {
   const [ dataEmail, setDataEmail ] = useState('')
   const [ dataPassword, setDataPassword ] = useState('')
   const [ confirmPassword, setConfirmPassword ] = useState('')
-  const [ content, setContent ] = useState ('')
   const [ stateOfPassword, setStateOfPassword ] = useState('password')
   const [ passwordComplexity, setPasswordComplexity ] = useState('')
 
@@ -139,9 +135,6 @@ function SignUp(props) {
       setConfirmPassword(value)
     }
   }
-
-  // useEffect( () => {
-  // }, [dataPassword, confirmPassword] )
   
   const signUp = () => {
     if (dataPassword !== confirmPassword) {
@@ -152,13 +145,6 @@ function SignUp(props) {
       localStorage.setItem( 'password', dataPassword )
       props.setAccountStatus(true)
     }
-
-    // localStorage.setItem( 'name', dataName )
-    // localStorage.setItem( 'email', dataEmail )
-    // localStorage.setItem( 'password', dataPassword )
-    // props.setAccountStatus(true)
-    // dataPassword !== confirmPassword ? setContent('Пароли не совпадают') : setContent('✔️')
-    // dataPassword !== confirmPassword ? alert('Пароли не совпадают') : ''
   }
   const viewPassword = () => {
     if (stateOfPassword === 'password') {
@@ -240,12 +226,6 @@ function SignUp(props) {
             <label htmlFor="showPassword">Показать пароль</label>
           </div>
         </form>
-
-
-
-          
-
-          {/* {content} */}
           <button onClick={signUp} className='signUp'>Зарегистрироваться</button>
       </div>
     </div>
@@ -253,8 +233,6 @@ function SignUp(props) {
 }
 
 
-// Страница, генерируется если пользователь вошел в аккаунт
-// isSignIn = true: 
 function Page() {
   
   return(
