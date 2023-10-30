@@ -43,23 +43,15 @@ export function SignIn({ handleChange, setIsSignIn }) {
         <div className={styles.textBlockSignIn}>
             <h2 className={styles.h2}>Войдите в аккаунт</h2>
 
-            
-
-            <form>
-                {/* <h4>Введите email</h4> */}
                 <input type="email" placeholder='Email' id='userEmail' onChange={(e) => handleInputChange(e)} value={userEmail}/>
-            </form>
-
-            <form>
-                {/* <h4>Введите пароль</h4> */}
-                <input type={stateOfPassword} placeholder='Пароль' id='userPassword' onChange={(e) => handleInputChange(e)} value={userPassword}/>
                 <div>
-                <input type="checkbox" className={styles.showPassword} id='showPassword' onClick={viewPassword}/>
-                <label htmlFor="showPassword">Показать пароль</label>
-                </div>
-            </form>
+                    <input type={stateOfPassword} placeholder='Пароль' id='userPassword' onChange={(e) => handleInputChange(e)} value={userPassword}/>
 
-            
+                    <div>
+                        <input type="checkbox" className={styles.showPassword} id='showPassword' onClick={viewPassword}/>
+                        <label htmlFor="showPassword">Показать пароль</label>
+                    </div>
+                </div>
 
             <button onClick={verification} className={styles.signIn}>Войти в аккаунт</button> 
             <a href='#'onClick={handleChange} className={styles.notAccount}>У вас нет аккаунта?</a> 

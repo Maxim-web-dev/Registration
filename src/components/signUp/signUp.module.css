@@ -53,4 +53,26 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: #0B2349;
+    align-self: center;
+}
+.goBack{
+    flex: none;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* align-self: baseline; */
+    align-self: normal;
+    background: none;
+    border: 0;
+    height: 40px;
+    width: 40px;
+}
+.goBack:hover{
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+.head{
+    display: flex;
+    align-items: center;
 }
