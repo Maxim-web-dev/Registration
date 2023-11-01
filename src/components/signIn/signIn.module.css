@@ -21,6 +21,8 @@
     background-color: #ffffff;
     cursor: pointer;
     transition: border-color 0.25s;
+    text-align: center;
+    text-decoration: none;
   }
   .signIn:hover {
     border-color: #ff0000;
